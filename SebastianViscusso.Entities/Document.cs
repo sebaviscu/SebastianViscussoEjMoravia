@@ -15,9 +15,22 @@ namespace SebastianViscusso.Clases
         public string Title { get; set; }
         public string Text { get; set; }
 
+        public Document(string fileName, string safeFileName)
+        {
+            //
+            // constructor to set file name and its contents
+            //
+
+            this.Title = fileName;
+            this.Text = safeFileName;
+        }
 
         public string ExtractTitleWithoutExtension(string fileName)
         {
+            //
+            // returns the name of the file without the extension
+            //
+
             string rtaName;
             string extractFile = Path.GetExtension(fileName);
             rtaName = fileName.Replace(extractFile, "");
@@ -27,6 +40,10 @@ namespace SebastianViscusso.Clases
 
         public string ExtractText(string filePath)
         {
+            //
+            // returns a string with the contents of the file
+            //
+
             string rtaText = "";
             StreamReader sr = new StreamReader(filePath);
             string line;
@@ -43,6 +60,10 @@ namespace SebastianViscusso.Clases
 
         public bool ExportTo_XML(string fileName, string docText)
         {
+            //
+            // export the file to XML document
+            //
+
             try
             {
                 XmlTextWriter writer = new XmlTextWriter(fileName + ".xml", System.Text.Encoding.UTF8);
@@ -66,6 +87,10 @@ namespace SebastianViscusso.Clases
 
         public bool ExportTo_Json(string fileName, Document doc)
         {
+            //
+            // export the file to JSON document
+            //
+
             try
             {
                 var serializedDoc = JsonConvert.SerializeObject(doc);

@@ -17,3 +17,16 @@ C:\Users\bocha\Desktop\Moravia\V2\SebastianViscusso\SebastianViscusso.Entities\b
 C:\Users\bocha\Desktop\Moravia\V2\SebastianViscusso\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.csprojResolveAssemblyReference.cache
 C:\Users\bocha\Desktop\Moravia\V2\SebastianViscusso\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.dll
 C:\Users\bocha\Desktop\Moravia\V2\SebastianViscusso\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.pdb
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\SebastianViscusso.Entities.dll
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\SebastianViscusso.Entities.pdb
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\mscorlib.dll
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\Newtonsoft.Json.dll
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\es\mscorlib.resources.dll
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\normidna.nlp
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\normnfc.nlp
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\normnfd.nlp
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\normnfkc.nlp
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\bin\Debug\normnfkd.nlp
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.csprojResolveAssemblyReference.cache
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.dll
+C:\Users\bocha\Desktop\SebastianViscussoEjMoravia\SebastianViscusso.Entities\obj\Debug\SebastianViscusso.Entities.pdb

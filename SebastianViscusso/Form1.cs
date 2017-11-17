@@ -12,15 +12,17 @@ using SebastianViscusso.Clases;
 using System.Collections;
 using System.Xml;
 using Newtonsoft.Json;
-
+using System.Resources;
+using System.Reflection; 
 
 namespace SebastianViscusso
 {
     public partial class Form1 : Form
     {
 
-        Document doc = new Document();
-        bool validToExport;
+        Document doc;
+        ResourceManager rm;
+        bool validToExport; // flag used to enable file export
 
         public Form1()
         {
@@ -29,81 +31,66 @@ namespace SebastianViscusso
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            InitializeTextBox();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "XML (*.xml)|*.xml|JSON (*.json)|*.json|HTML (*.html)|*.html|TXT (*.txt)|*.txt";
-            openFileDialog1.Title = "Search file";
-
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                try
-                {
-                    doc.Title = doc.ExtractTitleWithoutExtension(openFileDialog1.SafeFileName);
-                    txtNombre.Text = doc.Title;
-
-                    doc.Text = doc.ExtractText(openFileDialog1.FileName);
-                    txtText.Text = doc.Text;
-
-                    txtText.Enabled = true;
-                    txtNombre.Enabled = true;
-                    validToExport = true;
-                }
-                catch (Exception ee)
-                {
-                    MessageBox.Show(ee.Message);
-                }
-            }
+            rm = new ResourceManager("SebastianViscusso.Resource", Assembly.GetExecutingAssembly());
         }
 
         private void btnXML_Click(object sender, EventArgs e)
         {
-            if (validToExport)
+            try
             {
-                SaveFileDialog openFileDialog1 = new SaveFileDialog();
-
-                openFileDialog1.Title = "Select location";
-                openFileDialog1.FileName = doc.Title;
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (validToExport)
                 {
-                    
-                    bool result = doc.ExportTo_XML(openFileDialog1.FileName, doc.Text);
+                    SaveFileDialog openFileDialog1 = new SaveFileDialog();
 
-                    if (result)
+                    openFileDialog1.Title = rm.GetString("SelectLocation");
+                    openFileDialog1.FileName = doc.Title;
+                    if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        MessageBox.Show("The file was converted correctly");
-                        InitializeTextBox();
+
+                        bool result = doc.ExportTo_XML(openFileDialog1.FileName, doc.Text);
+
+                        if (result)
+                        {
+                            MessageBox.Show(rm.GetString("MsjCorrectConversion"));
+                        }
+                        else
+                            MessageBox.Show(rm.GetString("MsjIncorrectConversion"));
                     }
-                    else
-                        MessageBox.Show("An error has occurred");
                 }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
         private void btnJSON_Click(object sender, EventArgs e)
         {
-            if (validToExport)
+            try
             {
-                SaveFileDialog openFileDialog1 = new SaveFileDialog();
-
-                openFileDialog1.Title = "Select location";
-                openFileDialog1.FileName = doc.Title;
-                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (validToExport)
                 {
+                    SaveFileDialog openFileDialog1 = new SaveFileDialog();
 
-                    bool result = doc.ExportTo_Json(openFileDialog1.FileName, doc);
-
-                    if (result)
+                    openFileDialog1.Title = rm.GetString("SelectLocation");
+                    openFileDialog1.FileName = doc.Title;
+                    if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        MessageBox.Show("The file was converted correctly");
-                        InitializeTextBox();
+
+                        bool result = doc.ExportTo_Json(openFileDialog1.FileName, doc);
+
+                        if (result)
+                        {
+                            MessageBox.Show(rm.GetString("MsjCorrectConversion"));
+                        }
+                        else
+                            MessageBox.Show(rm.GetString("MsjIncorrectConversion"));
                     }
-                    else
-                        MessageBox.Show("An error has occurred");
                 }
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
             }
         }
 
@@ -118,18 +105,33 @@ namespace SebastianViscusso
             }
         }
 
-        private void btnClean_Click(object sender, EventArgs e)
-        {
-            InitializeTextBox();
-        }
 
-        public void InitializeTextBox()
+        private void btnSearch_Click(object sender, EventArgs e)
         {
-            txtText.Text = "Text within the file";
-            txtText.Enabled = false;
-            txtNombre.Text = "File name";
-            txtNombre.Enabled = false;
-            validToExport = false;
+            try
+            {
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Filter = "XML (*.xml)|*.xml|JSON (*.json)|*.json|HTML (*.html)|*.html|TXT (*.txt)|*.txt";
+                openFileDialog1.Title = rm.GetString("SearchFile");
+
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+
+                    doc = new Document(openFileDialog1.FileName, openFileDialog1.SafeFileName);
+
+                    txtNombre.Text = doc.Title;
+                    txtText.Text = doc.Text;
+
+                    txtText.Enabled = true;
+                    txtNombre.Enabled = true;
+                    validToExport = true;
+                }
+
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(ee.Message);
+            }
         }
     }
 }
